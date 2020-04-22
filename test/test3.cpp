@@ -5,7 +5,6 @@
 #include "../src/SorParser.h"
 #include "../src/helper.h"
 #include <vector>
-#include "../src/KVStore.h"
 #include "../src/key.h"
 
 
@@ -23,7 +22,7 @@ class Test {
      **/
     void testNullKey(KVStore * kv) {
         sys.t_true(kv->get(NULL) == nullptr);
-        sys.t_true(kv->wait_and_get(NULL) == nullptr);
+        //sys.t_true(kv->waitAndGet(NULL) == nullptr);
         sys.t_true(kv->put(NULL, NULL) == nullptr);
 
         sys.pln("NULL Keys handled correctly -- TESTS PASS.");

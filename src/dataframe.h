@@ -6,6 +6,7 @@
 #include "helper.h"
 #include <iostream>
 #include <chrono>
+#include "key.h"
 
 class DataFrame;
 

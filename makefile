@@ -1,10 +1,10 @@
 CXX = g++
-CXXFLAGS = -std=c++11	-Wall	-g
+CXXFLAGS = -std=c++11	-Wall	-g -lboost_serialization
 
 PROGRAMS = sorer
 
 build:
-	g++ -o sorer src/main.cpp	$(CXXFLAGS)
+	g++ -o sorer test/testTrivial.cpp	$(CXXFLAGS)
 	g++ -o test/test1 test/test1.cpp	$(CXXFLAGS)
 	g++ -o test/test2 test/test2.cpp	$(CXXFLAGS)
 	g++ -o test/test3 test/test3.cpp	$(CXXFLAGS)
@@ -12,7 +12,7 @@ build:
 	g++ -o test/test5 test/test5.cpp	$(CXXFLAGS)
 
 run:
-	./sorer data/test.sor 3
+	./sorer
 	
 
 tests:	
@@ -24,7 +24,7 @@ tests:
 
 
 val: 
-	valgrind --leak-check=full ./sorer data/test.sor 3
+	valgrind --leak-check=full ./sorer
 
 clean:
-	rm test/test1 test/test2 test/test3 test/test4 test/test5
+	rm sorer test/test1 test/test2 test/test3 test/test4 test/test5
