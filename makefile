@@ -24,7 +24,7 @@ tests:
 
 
 val: 
-	valgrind --leak-check=full ./sorer
+	valgrind --leak-check=full -v ./sorer
 
 clean:
 	rm sorer test/test1 test/test2 test/test3 test/test4 test/test5
