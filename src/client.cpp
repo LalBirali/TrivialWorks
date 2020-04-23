@@ -17,7 +17,7 @@
 
 // Credit to Karim Oumghar
 // https://simpledevcode.wordpress.com/2016/06/16/client-server-chat-in-c-using-sockets/
-// We used his server.cpp and client.cpp and made modifications to support multiple clients
+// We used his server.cpp and client.cpp and made modifications to support multiple clients and to connect with our dataframe system. 
 
 //Client side - to be used like ./client -ip [Client-IP] [Client-Port]
 int main(int argc, char *argv[])
