@@ -1,4 +1,4 @@
-Memorandum to Management: Milestone 4
+Memorandum to Management: Final Code Walk
 
 AUTHORS: Lal Birali and Kevin Enright
 
