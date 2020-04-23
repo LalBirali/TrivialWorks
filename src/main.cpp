@@ -5,7 +5,6 @@
 #include "SorParser.h"
 #include "helper.h"
 #include <vector>
-#include "KVStore.h"
 #include "key.h"
 #include <iostream>
 #include <string>
@@ -23,35 +22,6 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <fstream>
-
-
-class Test {
-    public:
-    Sys sys;
-
-    Test() {}
-
-    ~Test() {}
-
-    /**
-     * Tests that confirm that the DF is read and stored correctly upon call of the test.sor
-     **/
-    void testBasicSor(DataFrame * df) {
-        sys.t_true(df->get_string(1,2)->equals(new String("hello")));
-        sys.t_true(df->get_string(1,1)->equals(new String("12")));
-        sys.t_true(df->get_string(1,0)->equals(new String("23")));
-        sys.t_true(df->get_string(1,36)->equals(new String("23")));
-        sys.t_true(df->get_string(1,69)->equals(new String("23")));
-
-        sys.t_true(df->nrows() == 156);
-        sys.t_true(df->ncols() == 4);
-
-        
-    }
-
-
-
-};
 
 
 vector<string> parseCommandLine(string s) {
@@ -154,8 +124,6 @@ int main(int argh, char** argv) {
     DataFrame df(newSchema);
     Row r(newSchema);
     sor->setUpDF(&newSchema, &df);
-    Test* t = new Test();
-    t->testBasicSor(&df);
     KVStore * kv = new KVStore();
     for (int i = 0; i < numNodes; i++) {
         int x = floor((i * df.nrows())/numNodes);
@@ -171,7 +139,7 @@ int main(int argh, char** argv) {
     std::cout << arr.at(1)->get_string(1,17)->c_str() << std::endl;
 
      //for the server, we only need to specify a port number
-    if(argc != 5)
+    if(argh != 5)
     {
         std::cerr << "Usage: port" << std::endl;
         exit(0);
